@@ -1,0 +1,60 @@
+---
+version: "3.9"
+services:
+  bed_socket:
+    image: trevorlauder/bn_adjustable_bed-bed_socket:latest
+    container_name: bn_adjustable_bed-bed_socket
+    networks:
+      default:
+      lan:
+        ipv4_address: <IP>
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    ports:
+      - "23778"
+    restart: unless-stopped
+  app_api:
+    image: trevorlauder/bn_adjustable_bed-app_api:latest
+    container_name: bn_adjustable_bed-app_api
+    networks:
+      default:
+      lan:
+        ipv4_address: <IP>
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    ports:
+      - "80"
+    restart: unless-stopped
+  controller_api:
+    image: trevorlauder/bn_adjustable_bed-controller_api:latest
+    container_name: bn_adjustable_bed-controller_api
+    networks:
+      default:
+      lan:
+        ipv4_address: <IP>
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+      - bed_socket
+    ports:
+      - "80"
+    restart: unless-stopped
+  redis:
+    image: redis:6
+    container_name: bn_adjustable_bed-redis
+    networks:
+      default:
+    ports:
+      - "6379"
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
+  lan:
+    external: true

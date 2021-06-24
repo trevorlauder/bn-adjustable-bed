@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  ci_app_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build & Unit Test app_api
+        uses: docker/build-push-action@v2.5.0
+        with:
+          context: services/app_api
+          target: unittests
+
+  ci_bed_socket:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build bed_socket
+        uses: docker/build-push-action@v2.5.0
+        with:
+          context: services/bed_socket
+          target: build
+
+  ci_controller_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build & Unit Test controller_api
+        uses: docker/build-push-action@v2.5.0
+        with:
+          context: services/controller_api
+          target: unittests

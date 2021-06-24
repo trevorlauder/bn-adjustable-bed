@@ -1,0 +1,30 @@
+---
+commands:
+  online:
+    comment: |
+      This appears to be needed to put the bed online when adding it to the app.
+    send: '90000000173321fd6e4f8f1aaa50aa44eb433dbe1bba972776005c05'
+responses:
+  ^230000001a03245e6bb40010(.*)00003c$:
+    comment: |
+      This appears to be some type of authentication as authorize_code is included in the data sent by the bed.
+      If we don't respond, the bed will keep trying to reconnect and you won't be able to control it.
+    groups:
+      - "bed:authorize_code"
+    response: '28000000020000'
+  ^c3000000010c$:
+    comment: >
+      No idea what this is, but the request and response are always the same.
+    response: 'c80000000b0d07e500CDB35F16350320'
+  ^4300000024245e6bb4010106073004000000002630040000000064900c(.{24})$:
+    comment: |
+      This request includes the devices mac address.
+      Responding doesn't seem to be required as everything functions without it.
+    groups:
+      - "bed:device_mac_address"
+    response: '4800000003010100'
+  ^d300000000$:
+    comment: |
+      This appears to be a Keep Alive request.
+      If we don't respond, the bed will keep trying to reconnect and you won't be able to control it.
+    response: 'd800000000'
