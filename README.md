@@ -1,5 +1,7 @@
 # BN Adjustable Bed Mock API and Socket Interface
 
+_**This project is not an official project of, and is in no way affiliated with, Blissful Nights or the Ronin Wifi mobile app**_
+
 [![CI](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/ci.yml/badge.svg)](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/ci.yml)
 [![Release](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/release.yml/badge.svg)](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/release.yml)
 
