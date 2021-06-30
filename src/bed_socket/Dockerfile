@@ -1,10 +1,12 @@
 FROM python:3.9.5-slim AS build
 
-COPY requirements.txt ./
+COPY Pipfile Pipfile.lock ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install pipenv
+RUN pipenv install --deploy --ignore-pipfile
 
 COPY *.py /
 COPY config/*.* config/
 
-CMD [ "python", "-u", "./run.py" ]
+ENTRYPOINT ["pipenv"]
+CMD [ "run", "python", "-u", "./run.py" ]
