@@ -1,6 +1,7 @@
 import threading
 
 import reyaml
+
 from bedsocket import BedSocket
 from datastore import DataStore
 from loghandler import LogHandler
