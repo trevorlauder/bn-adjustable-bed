@@ -24,7 +24,7 @@ jobs:
       - name: Build app_api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: services/app_api
+          context: src/app_api
           target: build
           tags: ${{ steps.meta.outputs.tags }}
       - name: Save and Upload app_api
@@ -37,7 +37,7 @@ jobs:
       - name: Unit Test app_api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: services/app_api
+          context: src/app_api
           target: unittests
 
   release_build_bed_socket:
@@ -57,7 +57,7 @@ jobs:
       - name: Build bed_socket
         uses: docker/build-push-action@v2.5.0
         with:
-          context: services/bed_socket
+          context: src/bed_socket
           target: build
           tags: ${{ steps.meta.outputs.tags }}
       - name: Save and Upload app_api
@@ -85,7 +85,7 @@ jobs:
       - name: Build controller_api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: services/controller_api
+          context: src/controller_api
           target: build
           tags: ${{ steps.meta.outputs.tags }}
       - name: Save and Upload controller_api
@@ -98,7 +98,7 @@ jobs:
       - name: Unit Test controller_api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: services/controller_api
+          context: src/controller_api
           target: unittests
 
   release_push_app_api:
