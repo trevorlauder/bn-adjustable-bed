@@ -2,7 +2,7 @@
 version: "3.9"
 services:
   bed_socket:
-    build: services/bed_socket
+    build: src/bed_socket
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -11,7 +11,7 @@ services:
       - "23778:23778"
     restart: unless-stopped
   controller_api:
-    build: services/controller_api
+    build: src/controller_api
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -21,7 +21,7 @@ services:
       - "8080:80"
     restart: unless-stopped
   app_api:
-    build: services/app_api
+    build: src/app_api
     environment:
       - REDIS_HOST=redis
     depends_on:

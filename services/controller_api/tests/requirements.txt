@@ -1,3 +1,0 @@
-pytest==6.2.4
-requests==2.25.1
-pytest-reportlog==0.1.2

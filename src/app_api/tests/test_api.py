@@ -1,6 +1,7 @@
+from fastapi.testclient import TestClient
+
 from api import Api
 from config import get_config
-from fastapi.testclient import TestClient
 
 
 class MockDataStore:

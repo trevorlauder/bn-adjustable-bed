@@ -1,3 +1,0 @@
-name: bn_adjustable_bed
-dependencies:
-  - python=3.9.5

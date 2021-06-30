@@ -6,22 +6,6 @@ on:
 
   workflow_dispatch:
 
-jobs:
-  ci_project_requirements:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.5'
-      - name: Verify Requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install pur
-          ./update_reqs.sh project dry
-
   ci_app_api:
     runs-on: ubuntu-latest
 
@@ -32,21 +16,6 @@ jobs:
         with:
           context: services/app_api
           target: unittests
-
-  ci_app_api_requirements:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.5'
-      - name: Verify Requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install pur
-          ./update_reqs.sh app_api dry
 
   ci_bed_socket:
     runs-on: ubuntu-latest
@@ -59,21 +28,6 @@ jobs:
           context: services/bed_socket
           target: build
 
-  ci_bed_socket_requirements:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.5'
-      - name: Verify Requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install pur
-          ./update_reqs.sh bed_socket dry
-
   ci_controller_api:
     runs-on: ubuntu-latest
 
@@ -84,18 +38,3 @@ jobs:
         with:
           context: services/controller_api
           target: unittests
-
-  ci_controller_api_requirements:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.5'
-      - name: Verify Requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install pur
-          ./update_reqs.sh controller_api dry
