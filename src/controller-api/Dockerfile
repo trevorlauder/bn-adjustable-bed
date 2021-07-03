@@ -30,7 +30,10 @@ RUN .venv/bin/pytest tests/
 FROM base AS final
 
 COPY --from=build .venv .venv
+COPY --from=build controller_api controller_api
 
-ENTRYPOINT [".venv/bin/python"]
+WORKDIR /controller_api
+
+ENTRYPOINT ["../.venv/bin/python"]
 
 CMD [ "-u", "./run.py" ]
