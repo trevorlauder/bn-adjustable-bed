@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
-from api import Api
-from config import get_config
+from app_api.api import Api
+from app_api.config import get_config
 
 
 class MockDataStore:
@@ -22,7 +22,7 @@ class MockDataStoreEmpty:
         return False
 
 
-config = get_config(file="config/config.yml")
+config = get_config(file="app_api/config/config.yml")
 test_config = get_config(file="tests/config/config.yml")
 
 datastore_empty = MockDataStoreEmpty()

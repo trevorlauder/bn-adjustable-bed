@@ -7,35 +7,35 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci_app_api:
+  ci_app-api:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Unit Test app_api
+      - name: Build & Unit Test app-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/app_api
+          context: src/app-api
           target: unittests
 
-  ci_bed_socket:
+  ci_bed-socket:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build bed_socket
+      - name: Build bed-socket
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/bed_socket
+          context: src/bed-socket
           target: build
 
-  ci_controller_api:
+  ci_controller-api:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Unit Test controller_api
+      - name: Build & Unit Test controller-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/controller_api
+          context: src/controller-api
           target: unittests

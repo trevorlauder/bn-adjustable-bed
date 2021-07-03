@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
-from api import Api
-from config import get_config
+from controller_api.api import Api
+from controller_api.config import get_config
 
 
 class MockDataStore:
@@ -12,7 +12,7 @@ class MockDataStore:
         return RuntimeError
 
 
-config = get_config(file="config/config.yml")
+config = get_config(file="controller_api/config/config.yml")
 test_config = get_config(file="tests/config/config.yml")
 
 datastore = MockDataStore()

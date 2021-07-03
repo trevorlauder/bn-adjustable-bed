@@ -2,11 +2,11 @@
 
 _**This project is not an official project of, and is in no way affiliated with, Blissful Nights or the Ronin Wifi mobile app**_
 
-[![CI](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/ci.yml/badge.svg)](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/ci.yml)
-[![Release](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/release.yml/badge.svg)](https://github.com/trevorlauder/bn_adjustable_bed/actions/workflows/release.yml)
+[![CI](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml)
+[![Release](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml)
 
-<img alt="image" src="screenshots/controller_api.jpg">
-<img alt="image" src="screenshots/bed_socket.jpg">
+<img alt="image" src="screenshots/controller-api.jpg">
+<img alt="image" src="screenshots/bed-socket.jpg">
 
 
 This project sets up an API and Socket Interface for the [Blissful Nights Wall Hugger Adjustable Bed with Massage and Alexa Voice Command](https://www.blissfulnights.com/collections/adjustable-bed-bases/products/wall-glide-adjustable-bed-with-massage-and-voice-command).
@@ -17,9 +17,9 @@ Not all of the socket communication protocol is understood, but enough of it has
 
 ## Docker Hub Links
 
-* [app_api](https://hub.docker.com/r/trevorlauder/bn_adjustable_bed-app_api)
-* [bed_socket](https://hub.docker.com/r/trevorlauder/bn_adjustable_bed-bed_socket)
-* [controller_api](https://hub.docker.com/r/trevorlauder/bn_adjustable_bed-bed_socket)
+* [app-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-app-api)
+* [bed-socket](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-bed-socket)
+* [controller-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-bed-socket)
 
 ## How to Use
 
@@ -37,23 +37,23 @@ The HTTP API is exposed on port `80` and provides endpoints that will allow you 
 
 #### Setup
 
-1. An [example](https://github.com/trevorlauder/bn_adjustable_bed/blob/main/docker-compose.yml.example) Docker Compose Config File is provided.  It uses a default bridge network for communcation to the redis instance and configures the other 3 services to use an IP on a `macvlan` network named `lan`.  Change `<IP>` in the example file based on your network, they all need to be unique.  If you prefer, you could use the [main](https://github.com/trevorlauder/bn_adjustable_bed/blob/main/docker-compose.yml) Docker Compose Config File used for development as a start, it uses the default network and exposes the service ports through a single IP instead.  In this case the `Bed Controller API` will be on port `8080` instead of `80`.
+1. An [example](https://github.com/trevorlauder/bn-adjustable-bed/blob/main/docker-compose.yml.example) Docker Compose Config File is provided.  It uses a default bridge network for communcation to the redis instance and configures the other 3 services to use an IP on a `macvlan` network named `lan`.  Change `<IP>` in the example file based on your network, they all need to be unique.  If you prefer, you could use the [main](https://github.com/trevorlauder/bn-adjustable-bed/blob/main/docker-compose.yml) Docker Compose Config File used for development as a start, it uses the default network and exposes the service ports through a single IP instead.  In this case the `Bed Controller API` will be on port `8080` instead of `80`.
 
 1. Setup a directory for the services and run Docker Compose to start the 4 services (Redis, App API, Bed Socket Interface and Controller API).
 
 ```bash
-mkdir bn_adjustable_bed
+mkdir bn-adjustable-bed
 
-cd bn_adjustable_bed
+cd bn-adjustable-bed
 
-wget https://github.com/trevorlauder/bn_adjustable_bed/blob/main/docker-compose.yml.example -O docker-compose.yml
+wget https://github.com/trevorlauder/bn-adjustable-bed/blob/main/docker-compose.yml.example -O docker-compose.yml
 
 # adjust <IP> and config for your network
 
 docker-compose up
 ```
 
-1. Hijack DNS queries to `api2.xlink.cn` and `cm2.xlink.cn` on your network so that they resolve to the IP address of your docker services.  If you're using separate IP's for each service, `api2.xlink.cn` should be pointed at the `app_api` service and `cm2.xlink.cn` should be pointed at the `bed_socket` service.
+1. Hijack DNS queries to `api2.xlink.cn` and `cm2.xlink.cn` on your network so that they resolve to the IP address of your docker services.  If you're using separate IP's for each service, `api2.xlink.cn` should be pointed at the `app-api` service and `cm2.xlink.cn` should be pointed at the `bed-socket` service.
 
 1. Log into the Ronin Wifi mobile app using any email address and password, neither need to be valid.  Make sure your mobile device is connected to your network so that is resolves your hijacked domains properly.
 
