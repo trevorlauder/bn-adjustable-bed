@@ -393,8 +393,8 @@ standard = ["websockets (>=9.1)", "httptools (>=0.2.0,<0.3.0)", "watchgod (>=0.6
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9.5"
-content-hash = "5da075d45a9a8e58dca39a4bae531c75e4313454462380867f150754cdb5d9e1"
+python-versions = "^3.9"
+content-hash = "0e28dd7dcc47b0170499cc339b1987a84e573ad483b519f3b2417e13a8771534"
 
 [metadata.files]
 appdirs = [
