@@ -17,9 +17,9 @@ Not all of the socket communication protocol is understood, but enough of it has
 
 ## Docker Hub Links
 
-* [app-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-app-api)
-* [bed-socket](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-bed-socket)
-* [controller-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed-bed-socket)
+* [app-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed_app-api)
+* [bed-socket](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed_bed-socket)
+* [controller-api](https://hub.docker.com/r/trevorlauder/bn-adjustable-bed_controller-api)
 
 ## How to Use
 
