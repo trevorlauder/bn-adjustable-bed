@@ -21,7 +21,10 @@ COPY bed_socket/ /bed_socket/
 FROM base AS final
 
 COPY --from=build .venv .venv
+COPY --from=build bed_socket bed_socket
 
-ENTRYPOINT [".venv/bin/python"]
+WORKDIR /bed_socket
+
+ENTRYPOINT ["../.venv/bin/python"]
 
 CMD [ "-u", "./run.py" ]
