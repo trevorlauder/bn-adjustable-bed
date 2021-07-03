@@ -1,8 +1,8 @@
 ---
 version: "3.9"
 services:
-  bed_socket:
-    build: src/bed_socket
+  bed-socket:
+    build: src/bed-socket
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -10,18 +10,18 @@ services:
     ports:
       - "23778:23778"
     restart: unless-stopped
-  controller_api:
-    build: src/controller_api
+  controller-api:
+    build: src/controller-api
     environment:
       - REDIS_HOST=redis
     depends_on:
       - redis
-      - bed_socket
+      - bed-socket
     ports:
       - "8080:80"
     restart: unless-stopped
-  app_api:
-    build: src/app_api
+  app-api:
+    build: src/app-api
     environment:
       - REDIS_HOST=redis
     depends_on:

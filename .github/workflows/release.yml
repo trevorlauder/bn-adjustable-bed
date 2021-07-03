@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release_build_app_api:
+  release-build_app-api:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,31 +16,31 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: trevorlauder/bn_adjustable_bed-app_api
+          images: trevorlauder/bn-adjustable-bed_app-api
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
-      - name: Build app_api
+      - name: Build app-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/app_api
-          target: build
+          context: src/app-api
+          target: final
           tags: ${{ steps.meta.outputs.tags }}
-      - name: Save and Upload app_api
+      - name: Save and Upload app-api
         run: |
-          docker save trevorlauder/bn_adjustable_bed-app_api > app_api.tar
+          docker save trevorlauder/bn-adjustable-bed_app-api > app-api.tar
       - uses: actions/upload-artifact@v2
         with:
-          name: app_api
-          path: app_api.tar
-      - name: Unit Test app_api
+          name: app-api
+          path: app-api.tar
+      - name: Unit Test app-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/app_api
+          context: src/app-api
           target: unittests
 
-  release_build_bed_socket:
+  release-build_bed-socket:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,26 +49,26 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: trevorlauder/bn_adjustable_bed-bed_socket
+          images: trevorlauder/bn-adjustable-bed_bed-socket
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
-      - name: Build bed_socket
+      - name: Build bed-socket
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/bed_socket
-          target: build
+          context: src/bed-socket
+          target: final
           tags: ${{ steps.meta.outputs.tags }}
-      - name: Save and Upload app_api
+      - name: Save and Upload app-api
         run: |
-          docker save trevorlauder/bn_adjustable_bed-bed_socket > bed_socket.tar
+          docker save trevorlauder/bn-adjustable-bed_bed-socket > bed-socket.tar
       - uses: actions/upload-artifact@v2
         with:
-          name: bed_socket
-          path: bed_socket.tar
+          name: bed-socket
+          path: bed-socket.tar
 
-  release_build_controller_api:
+  release-build_controller-api:
     runs-on: ubuntu-latest
 
     steps:
@@ -77,32 +77,32 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: trevorlauder/bn_adjustable_bed-controller_api
+          images: trevorlauder/bn-adjustable-bed_controller-api
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
-      - name: Build controller_api
+      - name: Build controller-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/controller_api
-          target: build
+          context: src/controller-api
+          target: final
           tags: ${{ steps.meta.outputs.tags }}
-      - name: Save and Upload controller_api
+      - name: Save and Upload controller-api
         run: |
-          docker save trevorlauder/bn_adjustable_bed-controller_api > controller_api.tar
+          docker save trevorlauder/bn-adjustable-bed_controller-api > controller-api.tar
       - uses: actions/upload-artifact@v2
         with:
-          name: controller_api
-          path: controller_api.tar
-      - name: Unit Test controller_api
+          name: controller-api
+          path: controller-api.tar
+      - name: Unit Test controller-api
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/controller_api
+          context: src/controller-api
           target: unittests
 
-  release_push_app_api:
-    needs: [release_build_app_api, release_build_bed_socket, release_build_controller_api]
+  release-push_app-api:
+    needs: [release-build_app-api, release-build_bed-socket, release-build_controller-api]
     runs-on: ubuntu-latest
 
     steps:
@@ -113,14 +113,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: actions/download-artifact@v2
         with:
-          name: app_api
+          name: app-api
       - name: Push to DockerHub
         run: |
-          docker load -i app_api.tar
-          docker push trevorlauder/bn_adjustable_bed-app_api
+          docker load -i app-api.tar
+          docker push trevorlauder/bn-adjustable-bed_app-api
 
-  release_push_bed_socket:
-    needs: [release_build_app_api, release_build_bed_socket, release_build_controller_api]
+  release-push_bed-socket:
+    needs: [release-build_app-api, release-build_bed-socket, release-build_controller-api]
     runs-on: ubuntu-latest
 
     steps:
@@ -131,14 +131,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: actions/download-artifact@v2
         with:
-          name: bed_socket
+          name: bed-socket
       - name: Push to DockerHub
         run: |
-          docker load -i bed_socket.tar
-          docker push trevorlauder/bn_adjustable_bed-bed_socket
+          docker load -i bed-socket.tar
+          docker push trevorlauder/bn-adjustable-bed_bed-socket
 
-  release_push_controller_api:
-    needs: [release_build_app_api, release_build_bed_socket, release_build_controller_api]
+  release-push_controller-api:
+    needs: [release-build_app-api, release-build_bed-socket, release-build_controller-api]
     runs-on: ubuntu-latest
 
     steps:
@@ -149,8 +149,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: actions/download-artifact@v2
         with:
-          name: controller_api
+          name: controller-api
       - name: Push to DockerHub
         run: |
-          docker load -i controller_api.tar
-          docker push trevorlauder/bn_adjustable_bed-controller_api
+          docker load -i controller-api.tar
+          docker push trevorlauder/bn-adjustable-bed_controller-api

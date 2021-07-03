@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "bn-adjustable-bed",
+			"path": ".",
+		},
+		{
+			"path": "src/app-api",
+		},
+		{
+			"path": "src/bed-socket",
+		},
+		{
+			"path": "src/controller-api",
+		},
+	],
+	"settings": {
+		"files.exclude": {
+			"src": true,
+		},
+	}
+}
