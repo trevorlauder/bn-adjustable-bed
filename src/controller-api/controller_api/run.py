@@ -1,5 +1,4 @@
 import uvicorn  # type: ignore
-
 from api import Api
 from config import get_config
 from datastore import DataStore

@@ -23,11 +23,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build bed-socket
+      - name: Build & Unit Test bed-socket
         uses: docker/build-push-action@v2.5.0
         with:
           context: src/bed-socket
-          target: build
+          target: unittests
 
   ci_controller-api:
     runs-on: ubuntu-latest

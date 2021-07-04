@@ -67,6 +67,11 @@ jobs:
         with:
           name: bed-socket
           path: bed-socket.tar
+      - name: Unit Test bed-socket
+        uses: docker/build-push-action@v2.5.0
+        with:
+          context: src/bed-socket
+          target: unittests
 
   release-build_controller-api:
     runs-on: ubuntu-latest
