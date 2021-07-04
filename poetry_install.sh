@@ -1,5 +1,5 @@
 #!/bin/bash
 
-(cd src/app-api && poetry update && poetry install)
-(cd src/bed-socket && poetry update && poetry install)
-(cd src/controller-api && poetry update && poetry install)
+(cd src/app-api && rm -rf .venv && poetry update && poetry install)
+(cd src/bed-socket && rm -rf .venv && poetry update && poetry install)
+(cd src/controller-api && rm -rf .venv && poetry update && poetry install)
