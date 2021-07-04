@@ -18,6 +18,15 @@ RUN poetry install --no-root --no-dev
 COPY bed_socket/ /bed_socket/
 
 
+FROM build AS unittests
+
+RUN poetry install
+
+COPY tests/ /tests/
+
+RUN .venv/bin/pytest tests/
+
+
 FROM base AS final
 
 COPY --from=build .venv .venv

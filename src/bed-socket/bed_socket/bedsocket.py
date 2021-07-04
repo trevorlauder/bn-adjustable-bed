@@ -1,7 +1,6 @@
 import re
 import socket
 import sys
-import time
 
 
 class BedSocket:
@@ -20,6 +19,9 @@ class BedSocket:
         self.config = config
         self.datastore = datastore
         self.bed_logging = bed_logging
+
+        self.address = None
+        self.connection = None
 
     def receive_data(self):
         self.connection.settimeout(2.0)
@@ -63,27 +65,33 @@ class BedSocket:
 
             sys.exit(1)
 
-    def accept_connection(self, bed_logging: object):
-        bed_logging.log(message="Started and Waiting for a New Connection!")
+    def accept_connection(self):
+        self.bed_logging.log(
+            message="Started and Waiting for a New Connection!"
+        )
 
         self.connection, self.address = self.s.accept()
 
-        bed_logging.log(
+        self.bed_logging.log(
             message="Connection Opened: {}:{}".format(
                 self.address[0], self.address[1]
             )
         )
 
-    def api(self, online: bool):
+    def api(self, online: bool, loop: bool = True):
         self.online = online
 
-        while True:
+        do_loop = True
+
+        while do_loop:
             socket_data = self.receive_data()
 
             socket_data_hex = socket_data.hex()
 
             self.bed_logging.log(
-                message="Received from Bed: {}".format(
+                message="Received from {}:{}: {}".format(
+                    self.address[0],
+                    self.address[1],
                     socket_data_hex,
                 )
             )
@@ -109,25 +117,27 @@ class BedSocket:
                                 group_value=group_value,
                             )
 
-                    self.socket_send_data(respond_data["response"])
+                    self.socket_send_data(data=respond_data["response"])
 
                     self.bed_logging.log(
-                        message="Sent to Bed in Response: {}".format(
-                            respond_data["response"]
+                        message="Sent to {}:{} in Response: {}".format(
+                            self.address[0],
+                            self.address[1],
+                            respond_data["response"],
                         )
                     )
 
                     if not self.online:
-                        time.sleep(3)
-
                         command = self.config["commands"]["online"]["send"]
 
-                        self.socket_send_data(command)
+                        self.socket_send_data(data=command)
 
                         self.online = True
 
                         self.bed_logging.log(
-                            message="Sent to Bed (to put online): {}".format(
-                                command
+                            message="Sent to {}:{} (to put online): {}".format(
+                                self.address[0], self.address[1], command
                             )
                         )
+
+            do_loop = loop

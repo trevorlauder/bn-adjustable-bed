@@ -1,18 +1,14 @@
 import threading
 
-import reyaml
-
 from bedsocket import BedSocket
+from config import get_config
 from datastore import DataStore
 from loghandler import LogHandler
 from process_commands import process_commands
 
 
 def main():
-    config = None
-
-    with open("config/config.yml") as f:
-        config = reyaml.load(f.read())
+    config = get_config()
 
     bed_logging = LogHandler()
 
@@ -25,7 +21,7 @@ def main():
     online = False
 
     while True:
-        bed_socket.accept_connection(bed_logging=bed_logging)
+        bed_socket.accept_connection()
 
         process_commands_kwargs = {
             "bed_logging": bed_logging,
