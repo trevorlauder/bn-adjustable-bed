@@ -9,11 +9,13 @@ _**This project is not an official project of, and is in no way affiliated with,
 <img alt="image" src="screenshots/bed-socket.jpg">
 
 
-This project sets up an API and Socket Interface for the [Blissful Nights Wall Hugger Adjustable Bed with Massage and Alexa Voice Command](https://www.blissfulnights.com/collections/adjustable-bed-bases/products/wall-glide-adjustable-bed-with-massage-and-voice-command).
+This project sets up an HTTP API and Socket Interface for the [Blissful Nights Wall Hugger Adjustable Bed with Massage and Alexa Voice Command](https://www.blissfulnights.com/collections/adjustable-bed-bases/products/wall-glide-adjustable-bed-with-massage-and-voice-command).
 
-It allows you to control the bed using an HTTP API or the mobile app without having the mobile app or bed connect to the official servers hosted in AWS.
+I can control the bed using the HTTP API or the mobile app without having anything connected to the official servers hosted in AWS.
 
-Not all of the socket communication protocol is understood, but enough of it has been reverse engineered to provide this funcionality.
+I have the HTTP API hooked up to my iOS Shortcuts which allows me to use it in my automation.
+
+Not all of the socket communication protocol is understood, but enough of it has been reverse engineered to provide this functionality.
 
 ## Docker Hub Links
 
