@@ -9,7 +9,7 @@ authors = ["Trevor Lauder <trevor@lauderfamily.ca>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.68"
+fastapi = "^0.70"
 redis = "^3.5"
 reyaml = "^0.2"
 uvicorn = "^0.15"
