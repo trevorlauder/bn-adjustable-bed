@@ -14,7 +14,7 @@ reyaml = "^0.2"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"
-flake8 = "^3.9"
+flake8 = "^4.0"
 isort = "^5.9"
 pytest = "^6.2"
 pytest-mock = "^3.6"
