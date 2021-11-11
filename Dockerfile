@@ -29,6 +29,7 @@ RUN poetry export --dev --extras=test -f requirements.txt --output requirements-
 COPY src ${BUILD}/src
 COPY README.md ${BUILD}/
 
+RUN poetry version $(git describe --tags --abbrev=0)
 RUN poetry build -f wheel
 
 
