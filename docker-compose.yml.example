@@ -3,6 +3,7 @@ version: "3.9"
 services:
   bed-socket:
     image: trevorlauder/bn-adjustable-bed_bed-socket:latest
+    entrypoint: /venv/bin/bn-bed-socket
     container_name: bn-adjustable-bed_bed-socket
     networks:
       default:
@@ -17,6 +18,7 @@ services:
     restart: unless-stopped
   app-api:
     image: trevorlauder/bn-adjustable-bed_app-api:latest
+    entrypoint: /venv/bin/bn-app-api
     container_name: bn-adjustable-bed_app-api
     networks:
       default:
@@ -31,6 +33,7 @@ services:
     restart: unless-stopped
   controller-api:
     image: trevorlauder/bn-adjustable-bed_controller-api:latest
+    entrypoint: /venv/bin/bn-controller-api
     container_name: bn-adjustable-bed_controller-api
     networks:
       default:

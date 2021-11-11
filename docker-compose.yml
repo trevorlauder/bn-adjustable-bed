@@ -30,7 +30,7 @@ services:
     depends_on:
       - redis
     ports:
-      - "80:80"
+      - "80"
     restart: unless-stopped
   redis:
       image: redis:6
