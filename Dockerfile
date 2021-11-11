@@ -16,6 +16,7 @@ RUN apt update && apt -y install curl && apt clean
 FROM base AS dist
 
 ARG BUILD
+ARG GIT_TAG
 
 RUN python -m pip install poetry==1.1.11
 
@@ -29,7 +30,7 @@ RUN poetry export --dev --extras=test -f requirements.txt --output requirements-
 COPY src ${BUILD}/src
 COPY README.md ${BUILD}/
 
-RUN poetry version $(git describe --tags --abbrev=0)
+RUN poetry version ${GIT_TAG}
 RUN poetry build -f wheel
 
 
