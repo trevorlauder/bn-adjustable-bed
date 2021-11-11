@@ -12,7 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Unit Test
-        uses: docker/build-push-action@v2.5.0
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          target: unittests
+          python-version: 3.9
+      - name: Generate coverage report
+        run: |
+          pip install -r requirements-dev.txt
+          tox
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          verbose: True
+          fail_ci_if_error: True
