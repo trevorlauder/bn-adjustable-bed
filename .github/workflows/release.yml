@@ -45,7 +45,6 @@ jobs:
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v2
         with:
-          verbose: True
           fail_ci_if_error: True
 
   release-push:
