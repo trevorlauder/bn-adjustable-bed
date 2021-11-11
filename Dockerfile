@@ -1,9 +1,10 @@
 ARG USER="bnab"
 ARG BUILD="/tmp/bn_adjustable_bed"
-ARG PIP="/venv/bin/pip"
-ARG PYTHON="/venv/bin/python"
+ARG VENV="/venv"
+ARG PIP="${VENV}/bin/pip"
+ARG PYTHON="${VENV}/bin/python"
 
-FROM python:3.9.7-slim AS base
+FROM python:3.10.0-slim AS base
 
 ENV PIP_NO_CACHE_DIR=off \
     PYTHONDONTWRITEBYTECODE=1
@@ -16,12 +17,9 @@ FROM base AS dist
 
 ARG BUILD
 
-ENV POETRY_VERSION="1.1.11"
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+RUN python -m pip install poetry==1.1.11
 
 WORKDIR ${BUILD}
-
-ENV PATH="/root/.local/bin:$PATH"
 
 COPY poetry.lock pyproject.toml ${BUILD}/
 
@@ -40,10 +38,11 @@ FROM base AS bn_adjustable_bed
 ARG BUILD
 ARG PIP
 ARG PYTHON
+ARG VENV
 
 WORKDIR ${BUILD}
 
-RUN python -m venv /venv
+RUN python -m venv ${VENV}
 
 RUN ${PYTHON} -m pip install --upgrade pip
 
@@ -61,12 +60,15 @@ RUN ${PIP} install dist/*.whl
 FROM base as final
 
 ARG USER
+ARG VENV
 
 RUN groupadd -r ${USER} && useradd --no-log-init -m -r -g ${USER} ${USER}
 
 WORKDIR /bn_adjustable_bed
 
-COPY --from=bn_adjustable_bed /venv /venv
+COPY --from=bn_adjustable_bed ${VENV} ${VENV}
 COPY --from=bn_adjustable_bed /bn_adjustable_bed /bn_adjustable_bed
 
 USER ${USER}
+
+ENV PATH="${VENV}/bin:$PATH"

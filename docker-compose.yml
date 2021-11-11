@@ -2,8 +2,8 @@
 version: "3.9"
 services:
   bed-socket:
-    image: bn_adjustable_bed:latest
-    entrypoint: /venv/bin/bn-bed-socket
+    build: .
+    entrypoint: bn-bed-socket
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -12,8 +12,8 @@ services:
       - "23778"
     restart: unless-stopped
   controller-api:
-    image: bn_adjustable_bed:latest
-    entrypoint: /venv/bin/bn-controller-api
+    build: .
+    entrypoint: bn-controller-api
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -23,8 +23,8 @@ services:
       - "8080:80"
     restart: unless-stopped
   app-api:
-    image: bn_adjustable_bed:latest
-    entrypoint: /venv/bin/bn-app-api
+    build: .
+    entrypoint: bn-app-api
     environment:
       - REDIS_HOST=redis
     depends_on:

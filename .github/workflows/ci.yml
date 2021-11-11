@@ -19,11 +19,12 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: "3.10"
       - name: Generate coverage report
         run: |
-          pip install -r requirements-dev.txt
-          tox
+          python -m pip install poetry==1.1.11
+          poetry install --no-root
+          poetry run tox
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v2
         with:

@@ -28,7 +28,7 @@ bn-controller-api = "bn_adjustable_bed.controller_api:main"
 bn-bed-socket = "bn_adjustable_bed.bed_socket:main"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 
 fastapi = "^0.70"
 redis = "^3.5"
@@ -52,7 +52,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = clean,py39,report
+envlist = clean,py310,report
 isolated_build = true
 
 [testenv]
@@ -61,8 +61,8 @@ extras =
 commands =
     pytest --cov --cov-append --cov-report=term-missing {posargs:-vv}
 depends =
-    {py39}: clean
-    report: py39
+    {py310}: clean
+    report: py310
 
 [testenv:clean]
 extras =
