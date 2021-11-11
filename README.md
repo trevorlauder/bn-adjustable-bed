@@ -2,6 +2,7 @@
 
 _**This project is not an official project of, and is in no way affiliated with, Blissful Nights or the Ronin Wifi mobile app**_
 
+[![codecov](https://codecov.io/gh/trevorlauder/bn-adjustable-bed/branch/main/graph/badge.svg?token=DHZC7X92PP)](https://codecov.io/gh/trevorlauder/bn-adjustable-bed)
 [![CI](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml)
 [![Release](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml)
 

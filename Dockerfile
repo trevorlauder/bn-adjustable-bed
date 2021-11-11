@@ -70,20 +70,3 @@ COPY --from=bn_adjustable_bed /venv /venv
 COPY --from=bn_adjustable_bed /bn_adjustable_bed /bn_adjustable_bed
 
 USER ${USER}
-
-
-FROM dist as unittests
-
-ARG BUILD
-ARG PIP
-ARG PYTHON
-
-COPY --from=bn_adjustable_bed /venv /venv
-
-RUN ${PIP} install -r requirements-dev.txt
-
-COPY --from=bn_adjustable_bed /bn_adjustable_bed/config config
-COPY .coveragerc .coveragerc
-COPY tests tests
-
-RUN /venv/bin/tox --installpkg dist/*.whl -e py39

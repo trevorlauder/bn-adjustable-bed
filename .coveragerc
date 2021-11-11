@@ -13,6 +13,3 @@ source_pkgs =
 show_missing = true
 precision = 2
 fail_under = 60
-
-[xml]
-output = coverage-reports/coverage-bn_adjustable_bed.xml
