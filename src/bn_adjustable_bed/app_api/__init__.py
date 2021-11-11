@@ -1,3 +1,6 @@
+# Copyright 2021 Trevor Lauder.
+# SPDX-License-Identifier: MIT
+
 import os
 
 import uvicorn  # type: ignore
