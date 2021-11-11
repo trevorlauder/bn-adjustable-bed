@@ -1,26 +1,10 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/src/app-api"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "/src/bed-socket"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pip"
-    directory: "/src/controller-api"
+    directory: "/"
     schedule:
       interval: "daily"
   - package-ecosystem: "docker"
-    directory: "/src/app-api"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "docker"
-    directory: "/src/bed-socket"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "docker"
-    directory: "/src/controller-api"
+    directory: "/"
     schedule:
       interval: "daily"

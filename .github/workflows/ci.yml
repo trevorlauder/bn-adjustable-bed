@@ -12,30 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Unit Test app-api
+      - name: Build & Unit Test
         uses: docker/build-push-action@v2.5.0
         with:
-          context: src/app-api
-          target: unittests
-
-  ci_bed-socket:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build & Unit Test bed-socket
-        uses: docker/build-push-action@v2.5.0
-        with:
-          context: src/bed-socket
-          target: unittests
-
-  ci_controller-api:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build & Unit Test controller-api
-        uses: docker/build-push-action@v2.5.0
-        with:
-          context: src/controller-api
           target: unittests

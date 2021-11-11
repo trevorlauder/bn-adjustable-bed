@@ -1,0 +1,25 @@
+---
+api:
+  v2_user_auth:
+    access_token: YYz8mMQPTT9BjYP8XwgyR3hzcsR6bZ3meHz0foqYxQGmObueHPOV49JHmFNf5alzdWEatj7CmJgtqPTBTkrLvU==
+    authorize: k1qg66gusdu7uso8
+    expire_in: 7200
+    refresh_token: 7AeWVChyzBeBztq96OVi4NRnTguOqPdxojaaBCrASgScOmOzmr8SqchpxmnkrQkqhsgXyMp9L0wHSHtEyH1MsQ==
+    user_id: 1
+  v2_subscribe_devices:
+    subscribe_date: "2021-06-11T22:49:05.311Z"
+    is_active: True
+    role: 0
+    has_pairing: True
+    firmware_mod: "-56"
+    active_code: "1"
+    active_date: "2019-06-11T12:17:06.814Z"
+    groups: ""
+    mcu_version: 204
+    firmware_version: 100
+    source: 1
+    mcu_mod: "-56"
+    product_id: "160fa2b0157f5800160fa2b0157f5801"
+    access_key: 1
+    id: 1
+    is_online: True

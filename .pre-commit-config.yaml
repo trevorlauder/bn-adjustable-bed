@@ -1,0 +1,71 @@
+repos:
+  - repo: local
+    hooks:
+    - id: requirements-txt
+      name: requirements-txt
+      description: 'Generate requirements.txt with Poetry'
+      entry: poetry
+      args:
+        - export
+        - -f
+        - requirements.txt
+        - --output
+        - requirements.txt
+      language: system
+      pass_filenames: false
+    - id: requirements-txt-dev
+      name: requirements-txt-dev
+      description: 'Generate requirements-dev.txt with Poetry'
+      entry: poetry
+      args:
+        - export
+        - -f
+        - requirements.txt
+        - --output
+        - requirements-dev.txt
+        - --dev
+        - --extras=test
+      language: system
+      pass_filenames: false
+    - id: poetry-check
+      name: poetry-check
+      description: "Check pyproject.toml"
+      entry: poetry
+      args:
+        - check
+      language: system
+      pass_filenames: false
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-xml
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args:
+          - "--fix=lf"
+      - id: check-added-large-files
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.9.3
+    hooks:
+      - id: isort
+        additional_dependencies: ["toml"]
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+  - repo: https://github.com/psf/black
+    rev: 21.9b0
+    hooks:
+      - id: black
+  - repo: https://github.com/awslabs/git-secrets
+    rev: 'b9e96b3212fa06aea65964ff0d5cda84ce935f38'
+    hooks:
+      - id: git-secrets
