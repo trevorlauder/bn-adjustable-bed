@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci_app-api:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
