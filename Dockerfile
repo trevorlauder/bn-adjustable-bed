@@ -17,12 +17,9 @@ FROM base AS dist
 
 ARG BUILD
 
-ENV POETRY_VERSION="1.1.11"
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+RUN python -m pip install poetry==1.1.11
 
 WORKDIR ${BUILD}
-
-ENV PATH="/root/.local/bin:$PATH"
 
 COPY poetry.lock pyproject.toml ${BUILD}/
 
