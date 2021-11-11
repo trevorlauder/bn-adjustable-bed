@@ -1,3 +1,6 @@
+# Copyright 2021 Trevor Lauder.
+# SPDX-License-Identifier: MIT
+
 import pytest
 from fastapi.testclient import TestClient
 

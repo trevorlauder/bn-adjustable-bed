@@ -1,3 +1,6 @@
+# Copyright 2021 Trevor Lauder.
+# SPDX-License-Identifier: MIT
+
 from fastapi import FastAPI, HTTPException
 from starlette.responses import RedirectResponse
 

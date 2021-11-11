@@ -1,3 +1,6 @@
+# Copyright 2021 Trevor Lauder.
+# SPDX-License-Identifier: MIT
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.responses import RedirectResponse
