@@ -1,7 +1,8 @@
 ARG USER="bnab"
 ARG BUILD="/tmp/bn_adjustable_bed"
-ARG PIP="/venv/bin/pip"
-ARG PYTHON="/venv/bin/python"
+ARG VENV="/venv"
+ARG PIP="${VENV}/bin/pip"
+ARG PYTHON="${VENV}/bin/python"
 
 FROM python:3.10.0-slim AS base
 
@@ -40,10 +41,11 @@ FROM base AS bn_adjustable_bed
 ARG BUILD
 ARG PIP
 ARG PYTHON
+ARG VENV
 
 WORKDIR ${BUILD}
 
-RUN python -m venv /venv
+RUN python -m venv ${VENV}
 
 RUN ${PYTHON} -m pip install --upgrade pip
 
@@ -61,12 +63,15 @@ RUN ${PIP} install dist/*.whl
 FROM base as final
 
 ARG USER
+ARG VENV
 
 RUN groupadd -r ${USER} && useradd --no-log-init -m -r -g ${USER} ${USER}
 
 WORKDIR /bn_adjustable_bed
 
-COPY --from=bn_adjustable_bed /venv /venv
+COPY --from=bn_adjustable_bed ${VENV} ${VENV}
 COPY --from=bn_adjustable_bed /bn_adjustable_bed /bn_adjustable_bed
 
 USER ${USER}
+
+ENV PATH="${VENV}/bin:$PATH"
