@@ -3,7 +3,7 @@ ARG BUILD="/tmp/bn_adjustable_bed"
 ARG PIP="/venv/bin/pip"
 ARG PYTHON="/venv/bin/python"
 
-FROM python:3.9.7-slim AS base
+FROM python:3.10.0-slim AS base
 
 ENV PIP_NO_CACHE_DIR=off \
     PYTHONDONTWRITEBYTECODE=1
