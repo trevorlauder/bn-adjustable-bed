@@ -6,9 +6,10 @@ _**This project is not an official project of, and is in no way affiliated with,
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/trevorlauder/bn-adjustable-bed/main.svg)](https://results.pre-commit.ci/latest/github/trevorlauder/bn-adjustable-bed/main)
 [![CI](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/ci.yml)
 [![Release](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml/badge.svg)](https://github.com/trevorlauder/bn-adjustable-bed/actions/workflows/release.yml)
+[![PyPI version](https://badge.fury.io/py/bn-adjustable-bed.svg)](https://badge.fury.io/py/bn-adjustable-bed)
 
-<img alt="image" src="screenshots/controller-api.jpg">
-<img alt="image" src="screenshots/bed-socket.jpg">
+![image](https://user-images.githubusercontent.com/2594126/141405656-401480c5-f23f-4846-a241-405e7ca7c813.png)
+![image](https://user-images.githubusercontent.com/2594126/141405860-21e5c871-292e-42c5-a5ab-f0efaf072c0f.png)
 
 
 This project sets up an HTTP API and Socket Interface for the [Blissful Nights Wall Hugger Adjustable Bed with Massage and Alexa Voice Command](https://www.blissfulnights.com/collections/adjustable-bed-bases/products/wall-glide-adjustable-bed-with-massage-and-voice-command).
