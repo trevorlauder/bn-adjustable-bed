@@ -2,6 +2,7 @@
 name = "bn-adjustable-bed"
 version = "0.0.0"
 description = "BN Adjustable Bed Mock API and Socket Interface"
+include = ["bn_adjustable_bed/config"]
 
 homepage = "https://github.com/trevorlauder/bn-adjustable-bed"
 repository = "https://github.com/trevorlauder/bn-adjustable-bed"

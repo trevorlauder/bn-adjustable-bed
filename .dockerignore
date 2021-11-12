@@ -1,8 +1,2 @@
 *
-!.coveragerc
-!src
-!config
-!tests
-!README.md
-!poetry.lock
-!pyproject.toml
+!dist

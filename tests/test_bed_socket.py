@@ -8,7 +8,7 @@ from bn_adjustable_bed.bed_socket.config import get_config
 from bn_adjustable_bed.bed_socket.datastore import DataStore
 from bn_adjustable_bed.bed_socket.loghandler import LogHandler
 
-config = get_config(file="config/bed_socket.yml")
+config = get_config()
 
 bed_logging = LogHandler()
 

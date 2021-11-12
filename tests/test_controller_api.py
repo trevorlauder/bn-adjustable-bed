@@ -16,7 +16,7 @@ class MockDataStore:
         return RuntimeError
 
 
-config = get_config(file="config/controller_api.yml")
+config = get_config()
 test_config = get_config(file="tests/config/test_controller_api.yml")
 
 datastore = MockDataStore()

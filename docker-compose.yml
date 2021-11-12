@@ -2,7 +2,9 @@
 version: "3.9"
 services:
   bed-socket:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     entrypoint: bn-bed-socket
     environment:
       - REDIS_HOST=redis
@@ -12,7 +14,9 @@ services:
       - "23778"
     restart: unless-stopped
   controller-api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     entrypoint: bn-controller-api
     environment:
       - REDIS_HOST=redis
@@ -23,7 +27,9 @@ services:
       - "8080:80"
     restart: unless-stopped
   app-api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     entrypoint: bn-app-api
     environment:
       - REDIS_HOST=redis

@@ -31,7 +31,7 @@ def app_api_monkeypatch(monkeypatch):
     monkeypatch.setenv("REDIS_HOST", "redis")
 
 
-config = get_config(file="config/app_api.yml")
+config = get_config()
 test_config = get_config(file="tests/config/test_app_api.yml")
 
 datastore_empty = MockDataStoreEmpty()
