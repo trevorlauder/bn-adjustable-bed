@@ -32,7 +32,7 @@ bn-bed-socket = "bn_adjustable_bed.bed_socket:main"
 python = "^3.10"
 
 fastapi = "^0.70"
-redis = "^3.5"
+redis = "^4.0"
 pyyaml = "^6.0"
 uvicorn = "^0.15"
 pytest = { version = "^6.2", optional = true }
