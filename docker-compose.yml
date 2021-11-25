@@ -4,7 +4,8 @@ services:
   bed-socket:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+      target: dev
     entrypoint: bn-bed-socket
     environment:
       - REDIS_HOST=redis
@@ -16,7 +17,8 @@ services:
   controller-api:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+      target: dev
     entrypoint: bn-controller-api
     environment:
       - REDIS_HOST=redis
@@ -29,7 +31,8 @@ services:
   app-api:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+      target: dev
     entrypoint: bn-app-api
     environment:
       - REDIS_HOST=redis

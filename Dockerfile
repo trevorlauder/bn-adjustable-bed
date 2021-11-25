@@ -1,20 +1,34 @@
-FROM python:3.10.0-slim AS final
-
-ARG GIT_TAG
 ARG USER="bnab"
-ARG VENV="/venv"
-ARG PIP="${VENV}/bin/pip"
-ARG PYTHON="${VENV}/bin/python"
+
+FROM python:3.10.0-slim AS base
 
 RUN apt update && apt -y full-upgrade && apt clean
 
-RUN python -m venv ${VENV}
+ARG VENV_DIR="/VENV_DIR"
+ARG USER
 
-RUN ${PYTHON} -m pip install --upgrade pip
-RUN ${PYTHON} -m pip install bn-adjustable-bed==${GIT_TAG}
+RUN python -m venv ${VENV_DIR}
+ENV PATH="${VENV_DIR}/bin:$PATH"
+RUN python -m pip install --upgrade pip
 
 RUN groupadd -r ${USER} && useradd --no-log-init -m -r -g ${USER} ${USER}
 
+
+FROM base AS final
+
+ARG GIT_TAG
+ARG USER
+
+RUN python -m pip install bn-adjustable-bed==${GIT_TAG}
+
 USER ${USER}
 
-ENV PATH="${VENV}/bin:$PATH"
+
+FROM base AS dev
+
+ARG USER
+
+COPY dist dist
+RUN python -m pip install dist/*.whl
+
+USER ${USER}
