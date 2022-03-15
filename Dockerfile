@@ -4,7 +4,7 @@ FROM python:3.10.2-slim AS base
 
 RUN apt update && apt -y full-upgrade && apt clean
 
-ARG VENV_DIR="/VENV_DIR"
+ARG VENV_DIR="/venv"
 ARG USER
 
 RUN python -m venv ${VENV_DIR}
@@ -12,7 +12,6 @@ ENV PATH="${VENV_DIR}/bin:$PATH"
 RUN python -m pip install --upgrade pip
 
 RUN groupadd -r ${USER} && useradd --no-log-init -m -r -g ${USER} ${USER}
-
 
 FROM base AS final
 
