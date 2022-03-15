@@ -31,11 +31,11 @@ bn-bed-socket = "bn_adjustable_bed.bed_socket:main"
 [tool.poetry.dependencies]
 python = "^3.10"
 
-fastapi = "^0.70"
+fastapi = ">=0.70,<0.76"
 redis = "^4.0"
 pyyaml = "^6.0"
-uvicorn = "^0.15"
-pytest = { version = "^6.2", optional = true }
+uvicorn = ">=0.15,<0.18"
+pytest = { version = ">=6.2,<8.0", optional = true }
 pytest-mock = { version = "^3.6", optional = true }
 pytest-cov = { version = "^3.0", optional = true }
 requests = { version = "^2.26", optional = true }
