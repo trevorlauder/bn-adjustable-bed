@@ -41,7 +41,7 @@ pytest-cov = { version = ">=3,<5", optional = true }
 requests = { version = "^2.26", optional = true }
 
 [tool.poetry.dev-dependencies]
-tox = "^3.26"
+tox = "^4.2"
 
 [tool.poetry.extras]
 test = ["pytest", "pytest-mock", "pytest-cov", "requests"]
