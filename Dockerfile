@@ -1,6 +1,6 @@
 ARG USER="bnab"
 
-FROM python:3.11.0-slim AS base
+FROM python:3.11.2-slim AS base
 
 RUN apt update && apt -y full-upgrade && apt clean
 
